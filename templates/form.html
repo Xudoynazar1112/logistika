@@ -1,0 +1,175 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="/media/images/picture1.jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(244, 244, 244, 0.1);
+            background-image: url('media/images/photo.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+        }
+        .form-group {
+            margin: 20px;
+        }
+        .form-groups {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        button {
+            margin-left: 50%;
+            padding: 5px 20px;
+            border-radius: 12px;
+        }
+        textarea {
+            height: 30px;
+            width: 180px;
+            resize: none;
+        }
+        img {
+            width: 100px;
+            border-radius: 50%;
+            margin-left: 45%;
+            margin-bottom: 20px;
+        }
+        h2 {
+            background-color: rgb(248, 249, 250);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <img src="/media/images/logo.jpg">
+        <h2 class="text-center mb-4">Order Form</h2>
+        <form method="post" class="border p-4 bg-light rounded">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="form-groups">
+                <div class="form-group col-md-6">
+                    <label for="{{ form.user.id_for_label }}">Клиент:</label><br>
+                    {{ form.user.errors }}
+                    {{ form.user }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.send_from.id_for_label }}">Отправитель груза:</label><br>
+                    {{ form.send_from.errors }}
+                    {{ form.send_from }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.send_to.id_for_label }}">Получатель груза /грузополучатель:</label><br>
+                    {{ form.send_to.errors }}
+                    {{ form.send_to }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.receive_address.id_for_label }}">Место получения груза:</label><br>
+                    {{ form.receive_address.errors }}
+                    {{ form.receive_address }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.receive_data.id_for_label }}">Дата получения груза:</label><br>
+                    {{ form.receive_data.errors }}
+                    {{ form.receive_data }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.deliver_address.id_for_label }}">Место доставки груза (пункт назначения):</label><br>
+                    {{ form.deliver_address.errors }}
+                    {{ form.deliver_address }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.about_product.id_for_label }}">Вид груза, его классификационное описание:</label><br>
+                    {{ form.about_product.errors }}
+                    {{ form.about_product }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.product_id.id_for_label }}">Товарный код:</label><br>
+                    {{ form.product_id.errors }}
+                    {{ form.product_id }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.marking.id_for_label }}">Маркировка:</label><br>
+                    {{ form.marking.errors }}
+                    {{ form.marking }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.origin_country.id_for_label }}">Страна происхождения:</label><br>
+                    {{ form.origin_country.errors }}
+                    {{ form.origin_country }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.cost.id_for_label }}">Стоимость груза:</label><br>
+                    {{ form.cost.errors }}
+                    {{ form.cost }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.packaging_type.id_for_label }}">Вид упаковки с указанием содержимого:</label><br>
+                    {{ form.packaging_type.errors }}
+                    {{ form.packaging_type }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.size.id_for_label }}">Размер упаковки:</label><br>
+                    {{ form.size.errors }}
+                    {{ form.size }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.volume.id_for_label }}">Объем:</label><br>
+                    {{ form.volume.errors }}
+                    {{ form.volume }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.seats.id_for_label }}">Количество мест:</label><br>
+                    {{ form.seats.errors }}
+                    {{ form.seats }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.weight.id_for_label }}">Вес /брутто, нетто/ всех мест:</label><br>
+                    {{ form.weight.errors }}
+                    {{ form.weight }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.deliver_path.id_for_label }}">Вид транспорта и условия по отправке:</label><br>
+                    {{ form.deliver_path.errors }}
+                    {{ form.deliver_path }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.instruction_paperwork.id_for_label }}">Специальные указания по содействию в таможенной очистке и оформлении документов:</label><br>
+                    {{ form.instruction_paperwork.errors }}
+                    {{ form.instruction_paperwork }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.product_insurance.id_for_label }}">Указания о страховании груза (Осуществляется за счет Клиента):</label><br>
+                    {{ form.product_insurance.errors }}
+                    {{ form.product_insurance }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.other_instructions.id_for_label }}">Указание о выполнении иных работ и услуг:</label><br>
+                    {{ form.other_instructions.errors }}
+                    {{ form.other_instructions }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.temp_save.id_for_label }}">Xранению груза, получению его в пункте назначения:</label><br>
+                    {{ form.temp_save.errors }}
+                    {{ form.temp_save }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.special_notes.id_for_label }}">Особые отметки:</label><br>
+                    {{ form.special_notes.errors }}
+                    {{ form.special_notes }}
+                </div>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
