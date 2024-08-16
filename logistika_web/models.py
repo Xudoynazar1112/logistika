@@ -34,3 +34,5 @@ class Order(models.Model):
     other_instructions = models.TextField()
     temp_save = models.TextField()
     special_notes = models.TextField()
+    tg_nickname = models.CharField(max_length=100, null=True, blank=True)
+    phone_number = models.IntegerField(default=941234567)

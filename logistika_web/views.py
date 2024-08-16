@@ -10,13 +10,13 @@ def send_telegram_message(text):
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     data = {"chat_id": chat_id, "text": text, 'parse_mode': 'HTML'}
     response = requests.post(url, data=data)
-    print(response)
+    # print(response)
     return response
 
 
 def order(request):
     if request.method == 'POST':
-        print(request.POST)
+        # print(request.POST)
         form = OrderForm(request.POST)
         if form.is_valid():
             form_data = form.save()
